@@ -1,5 +1,6 @@
 {
   "name": "monorepo-workspaces",
+  "private": true,
   "packageManager": "yarn@4.4.1",
   "version": "0.0.0",
   "workspaces": [
@@ -8,9 +9,13 @@
   "scripts": {
     "build": "yarn workspaces foreach -A -t run build",
     "lint": "yarn workspaces foreach -A -t run lint",
-    "test": "yarn workspaces foreach -A -t run test"
+    "test": "yarn workspaces foreach -A -t run test",
+    "changeset": "changeset",
+    "version-packages": "changeset version",
+    "release": "changeset publish"
   },
   "devDependencies": {
+    "@changesets/cli": "^2.27.8",
     "@types/node": "^24.10.1",
     "ts-node": "^10.9.2",
     "typescript": "^5.9.3"
