@@ -1,5 +1,5 @@
 {
-  "name": "@anir-learning/math",
+  "name": "@anir-ln/math",
   "packageManager": "yarn@4.4.1",
   "version": "1.0.0",
   "main": "dist/index.js",

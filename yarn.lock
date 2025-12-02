@@ -5,27 +5,27 @@ __metadata:
   version: 8
   cacheKey: 10c0
 
-"@anir-learning/app@workspace:packages/app":
+"@anir-ln/app@workspace:packages/app":
   version: 0.0.0-use.local
-  resolution: "@anir-learning/app@workspace:packages/app"
+  resolution: "@anir-ln/app@workspace:packages/app"
   dependencies:
-    "@anir-learning/math": "workspace:*"
-    "@anir-learning/utils": "workspace:*"
+    "@anir-ln/math": "workspace:*"
+    "@anir-ln/utils": "workspace:*"
     "@types/node": "npm:^24.10.1"
     ts-node: "npm:^10.9.2"
     typescript: "npm:^5.9.3"
   languageName: unknown
   linkType: soft
 
-"@anir-learning/math@workspace:*, @anir-learning/math@workspace:packages/math":
+"@anir-ln/math@workspace:*, @anir-ln/math@workspace:packages/math":
   version: 0.0.0-use.local
-  resolution: "@anir-learning/math@workspace:packages/math"
+  resolution: "@anir-ln/math@workspace:packages/math"
   languageName: unknown
   linkType: soft
 
-"@anir-learning/utils@workspace:*, @anir-learning/utils@workspace:packages/utils":
+"@anir-ln/utils@workspace:*, @anir-ln/utils@workspace:packages/utils":
   version: 0.0.0-use.local
-  resolution: "@anir-learning/utils@workspace:packages/utils"
+  resolution: "@anir-ln/utils@workspace:packages/utils"
   languageName: unknown
   linkType: soft
 

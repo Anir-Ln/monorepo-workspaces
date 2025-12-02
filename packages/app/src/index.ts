@@ -1,5 +1,5 @@
-import { add, multiply } from "@anir-learning/math";
-import { greet, formatResult } from "@anir-learning/utils";
+import { add, multiply } from "@anir-ln/math";
+import { greet, formatResult } from "@anir-ln/utils";
 
 async function main() {
   console.log(greet("Anir"));
