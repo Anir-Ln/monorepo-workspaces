@@ -17,21 +17,16 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Use Node
-        uses: actions/setup-node@v4
+      - run: corepack enable
+      - run: corepack prepare yarn@4.4.1 --activate
+      - run: yarn --version
+
+      - uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: yarn
 
-      - name: Install
-        run: yarn install --frozen-lockfile
+      - run: yarn install --immutable
+      - run: yarn test
+      - run: yarn build
 
-      # If you use Nx, swap these with `pnpm nx affected -t lint,test,build`
-      - name: Lint
-        run: yarn lint
-
-      - name: Test
-        run: yarn test
-
-      - name: Build
-        run: yarn build
