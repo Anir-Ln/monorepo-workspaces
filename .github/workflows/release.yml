@@ -30,11 +30,6 @@ jobs:
       - name: Install
         run: yarn install --immutable
 
-      # - name: Configure npm auth
-      #   run: |
-      #     echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
-      #     echo "always-auth=true" >> ~/.npmrc
-
       - name: Create release PR or publish
         uses: changesets/action@v1
         with:
