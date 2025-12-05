@@ -33,11 +33,11 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
-          # Configure npm with token for authentication
-          echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > ~/.npmrc
-
+          # Configure npm authentication for Yarn 4
+          yarn config set npmAuthToken "$NPM_TOKEN"
+          
           # Publish all non-private workspaces to npm
           yarn workspaces foreach -A --no-private npm publish
-
+          
           # Create and push git tags for each published package
           yarn workspaces foreach -A --no-private exec bash -c 'TAG="$(jq -r .name package.json)@$(jq -r .version package.json)"; git tag "$TAG" && git push origin "$TAG"; echo "✓ Published $TAG to npm"'
