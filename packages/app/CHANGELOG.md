@@ -1,5 +1,12 @@
 # @anir-ln/app
 
+## 1.0.4
+
+### Patch Changes
+
+- Updated dependencies
+  - @anir-ln/math@1.2.0
+
 ## 1.0.3
 
 ### Patch Changes
