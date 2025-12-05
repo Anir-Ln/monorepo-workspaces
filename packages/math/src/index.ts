@@ -3,6 +3,7 @@ export const add = (x: number, y: number) => {
 }
 
 export const multiply = (x: number, y: number) => {
+  console.log("multiply called");
   return x * y;
 }
 
