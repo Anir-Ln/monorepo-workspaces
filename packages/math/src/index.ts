@@ -7,5 +7,6 @@ export const multiply = (x: number, y: number) => {
 }
 
 export const sum = (arr: number[]) : number => {
+  console.log("sum called");
   return arr.reduce((prev, curr) => prev + curr, 0);
 }
