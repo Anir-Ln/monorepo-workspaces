@@ -1,13 +1,7 @@
-name: Release workspace
+name: Release workspaces
 
 on:
   workflow_dispatch:
-    inputs:
-      workspace:
-        description: the name of the workspace / package to be released
-        required: true
-        type: string
-
 
 jobs:
   release:
@@ -33,7 +27,7 @@ jobs:
         run: yarn install --immutable
 
       - name: Build
-        run: yarn build --workspace "${{ inputs.workspace }}"
+        run: yarn workspaces foreach -A run build
 
       - name: publish
         env:
@@ -41,18 +35,9 @@ jobs:
         run: |
           # Configure npm with token for authentication
           echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > ~/.npmrc
-          
-          # Publish only this workspace to npm
-          yarn npm publish --workspace "${{ inputs.workspace }}"
-          
-          # Extract package name and version for git tag
-          WORKSPACE_PATH="packages/${{ inputs.workspace }}"
-          PACKAGE_NAME=$(jq -r '.name' "$WORKSPACE_PATH/package.json")
-          PACKAGE_VERSION=$(jq -r '.version' "$WORKSPACE_PATH/package.json")
-          TAG="${PACKAGE_NAME}@${PACKAGE_VERSION}"
-          
-          # Create and push git tag
-          git tag "$TAG"
-          git push origin "$TAG"
-          
-          echo "✓ Successfully published $TAG to npm"
+
+          # Publish all non-private workspaces to npm
+          yarn workspaces foreach -A --no-private npm publish
+
+          # Create and push git tags for each published package
+          yarn workspaces foreach -A --no-private exec bash -c 'TAG="$(jq -r .name package.json)@$(jq -r .version package.json)"; git tag "$TAG" && git push origin "$TAG"; echo "✓ Published $TAG to npm"'
