@@ -1,5 +1,11 @@
 # @anir-ln/math
 
+## 1.1.1
+
+### Patch Changes
+
+- testing
+
 ## 1.1.0
 
 ### Minor Changes
